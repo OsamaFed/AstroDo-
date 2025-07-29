@@ -29,7 +29,6 @@
   });
 
   function showNotification(message, type = 'success', duration = 2000) {
-      // تحسين الأداء - إزالة الإشعارات السابقة
       const existingNotifications = document.querySelectorAll('.notification');
       existingNotifications.forEach(notif => {
           if (notif.parentNode) {
@@ -40,15 +39,11 @@
       const notification = document.createElement('div');
       notification.className = `notification ${type}`;
       notification.innerHTML = message;
-      
-      // تحسين الأداء - استخدام requestAnimationFrame
       document.body.appendChild(notification);
       
       requestAnimationFrame(() => {
           notification.classList.add('show');
       });
-
-      // إخفاء الإشعار بعد ثانيتين
       setTimeout(() => {
           notification.classList.remove('show');
           setTimeout(() => {
@@ -377,7 +372,7 @@
       }
   }
 
-  // تحسين updateTaskCounter للأداء
+
   function updateTaskCounter() {
       if (!taskCounter) return;
       
@@ -409,7 +404,7 @@
 
 
 
-  // تحسين البحث مع debouncing
+
   let searchTimeout;
   function searchTasks(searchTerm) {
       clearTimeout(searchTimeout);
